@@ -9,9 +9,22 @@ import SwiftUI
 
 @main
 struct KanbanBarApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        Settings {
+            SettingsView()
         }
+    }
+}
+
+class AppDelegate: NSObject, NSApplicationDelegate {
+    private var menuBarController: MenuBarController?
+    
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        menuBarController = MenuBarController()
+        
+        // Hide dock icon and main window
+        NSApp.setActivationPolicy(.accessory)
     }
 }
