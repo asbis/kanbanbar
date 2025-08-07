@@ -31,7 +31,7 @@ struct MainPopoverView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .frame(width: 400, height: 600)
+        .frame(width: 500, height: 650)
         .background(Color(NSColor.controlBackgroundColor))
         .onAppear {
             if authService.isAuthenticated {
@@ -85,7 +85,7 @@ struct HeaderView: View {
             }
         }
         .padding(.horizontal, 16)
-        .padding(.vertical, 12)
+        .padding(.vertical, 8)
     }
 }
 

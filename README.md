@@ -52,28 +52,52 @@ xcodebuild -project KanbanBar.xcodeproj -scheme KanbanBar -configuration Release
 
 ## Setup
 
+### 1. GitHub OAuth Configuration
+
+Before running the app, you need to set up GitHub OAuth:
+
+1. **Create a GitHub OAuth App**:
+   - Go to [GitHub Settings > Developer settings > OAuth Apps](https://github.com/settings/developers)
+   - Click "New OAuth App"
+   - Fill in the application details:
+     - **Application name**: KanbanBar
+     - **Homepage URL**: `https://github.com/yourusername/KanbanBar`
+     - **Authorization callback URL**: `kanbanbar://oauth/callback`
+   - Click "Register application"
+
+2. **Configure Environment Variables**:
+   
+   Create a `.env` file in the project root:
+   ```bash
+   cp .env.example .env
+   ```
+   
+   Edit `.env` and add your OAuth credentials:
+   ```env
+   GITHUB_CLIENT_ID=your_github_client_id_here
+   GITHUB_CLIENT_SECRET=your_github_client_secret_here
+   ```
+   
+   **Important**: Never commit the `.env` file to version control. It's already included in `.gitignore`.
+
+3. **Alternative: Environment Variables**:
+   
+   Instead of using a `.env` file, you can set environment variables directly:
+   ```bash
+   export GITHUB_CLIENT_ID="your_github_client_id_here"
+   export GITHUB_CLIENT_SECRET="your_github_client_secret_here"
+   ```
+
+### 2. Running the App
+
 1. **Launch KanbanBar**: The app will appear in your menu bar
-2. **Connect GitHub**: Click the menu bar icon and follow the authentication flow
+2. **Connect GitHub**: Click the menu bar icon and follow the OAuth authentication flow
 3. **Select Project**: Choose a GitHub Project from the dropdown
 4. **View Your Board**: See your kanban columns and cards
 
 ## Configuration
 
-### GitHub OAuth Setup
-
-To use real GitHub authentication (currently using demo mode):
-
-1. Create a GitHub OAuth App:
-   - Go to GitHub Settings > Developer settings > OAuth Apps
-   - Click "New OAuth App"
-   - Set Authorization callback URL to your custom scheme
-
-2. Update the client ID in `AuthenticationService.swift`:
-   ```swift
-   private let clientId = "your_actual_github_client_id"
-   ```
-
-### Settings
+### App Settings
 
 Access settings by clicking the gear icon in the popover:
 
@@ -195,7 +219,7 @@ query GetProjects {
 
 ## Roadmap
 
-- [ ] Real GitHub OAuth implementation
+- [x] Real GitHub OAuth implementation
 - [ ] Drag and drop card management
 - [ ] Multiple GitHub account support
 - [ ] Custom notification settings

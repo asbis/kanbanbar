@@ -10,5 +10,18 @@
 	<false/>
 	<key>com.apple.security.files.user-selected.read-only</key>
 	<true/>
+	<key>com.apple.security.files.downloads.read-write</key>
+	<true/>
+	<key>com.apple.security.temporary-exception.mach-lookup.global-name</key>
+	<array>
+		<string>com.apple.dnssd.service</string>
+		<string>com.apple.networkd</string>
+		<string>com.apple.system.notification_center</string>
+	</array>
+	<key>com.apple.security.temporary-exception.files.absolute-path.read-only</key>
+	<array>
+		<string>/Library/Preferences/com.apple.networkd.plist</string>
+		<string>/private/var/db/DetachedSignatures</string>
+	</array>
 </dict>
 </plist>
